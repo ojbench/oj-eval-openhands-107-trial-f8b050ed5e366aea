@@ -99,7 +99,16 @@ namespace LIST
         cout << mx << '\n';
     }
     void clear() {
-        while (len > 0) remove(0);
+        if (!head) return;
+        NODE *cur = head->next;
+        while (cur != head) {
+            NODE *tmp = cur;
+            cur = cur->next;
+            delete tmp;
+        }
+        delete head;
+        head = nullptr;
+        len = 0;
     }
 
 }
